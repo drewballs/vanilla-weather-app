@@ -1,0 +1,261 @@
+body {
+  background-color: #e5e5e5;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  width: 820px;
+  min-height: 1090px;
+  margin: 0 auto;
+  background-image: url("../imgs/png/background@2x.png");
+  background-size: cover;
+  font-family: montserrat, sans-serif;
+  color: white;
+}
+
+.icon_main {
+  height: 200px;
+  width: 200px;
+  fill: white;
+  stroke: white;
+  position: relative;
+  float: right;
+}
+
+.icon_forecast {
+  height: 59px;
+  width: 59px;
+  fill: white;
+  stroke: white;
+  display: block;
+  margin: 17px auto 14px;
+}
+
+.welcome {
+  width: 100%;
+  text-align: center;
+  padding: 100px 0 0 0;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 51px;
+  font-weight: bold;
+}
+
+.location {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0 0 0;
+}
+
+.currently {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0 0 0;
+}
+
+.weather_current {
+  width: 100%;
+
+  padding: 40px 0 0 0;
+}
+
+.icon_main_container {
+  text-align: right;
+  padding-top: 30px;
+}
+
+.temp {
+  font-size: 103px;
+  font-weight: 200;
+  line-height: 110px;
+  padding: 0 10px;
+  margin-top: -20px;
+}
+
+.description {
+  font-size: 32px;
+  font-weight: 300;
+  padding: 0 10px;
+}
+
+.wind {
+  font-size: 32px;
+  font-weight: 300;
+  padding: 0 10px;
+}
+
+.temp-selector {
+  font-size: 32px;
+  font-weight: 300;
+  padding: 0 10px;
+}
+
+.weekly {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0 0 0;
+}
+
+.weather_forecast {
+  padding-top: 30px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.day {
+  font-size: 16px;
+}
+
+.wind_forecast {
+  font-size: 12px;
+  width: 100%;
+}
+.weather_forecast .col-2 {
+  text-align: center;
+}
+.col-2 {
+  flex: 0 0 auto;
+  width: 20%;
+  padding: 0;
+  text-align: center;
+}
+
+.search_bar {
+  width: 50%;
+  padding-top: 50px;
+  display: block;
+  margin: 0 auto;
+}
+
+.form-control {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
+}
+
+.form-control:focus {
+  background-color: transparent;
+}
+
+.input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n + 3),
+.input-group:not(.has-validation)
+  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-right: 20px;
+  color: white;
+  padding: 10px 20px;
+}
+
+.input-group
+  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-left: -1px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  color: white;
+  border-color: white;
+}
+
+#button-addon2n {
+  border-radius: 30px;
+  border: 2px solid white;
+  padding: 0 20px;
+  font-size: 17px;
+}
+
+.input.form-control {
+  color: white;
+}
+
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 0.8; /* Firefox */
+  text-align: center;
+}
+
+.form-control:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+}
+
+.form-control::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+}
+
+.footer {
+  width: 100%;
+  padding-top: 40px;
+}
+
+.footer .col-6 {
+  padding-top: 40px;
+  text-align: center;
+}
+
+.external_link {
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+  transition: ease 0.5s;
+}
+
+.external_link:hover {
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.8));
+}
+.btn-outline-primary {
+  color: white;
+  font-weight: 200;
+}
+.btn-check:active + .btn-outline-primary,
+.btn-check:checked + .btn-outline-primary,
+.btn-outline-primary.active,
+.btn-outline-primary.dropdown-toggle.show,
+.btn-outline-primary:active {
+  background-color: transparent;
+  border-color: white;
+  font-weight: 500;
+}
+
+.btn-check:active + .btn-outline-primary:focus,
+.btn-check:checked + .btn-outline-primary:focus,
+.btn-outline-primary.active:focus,
+.btn-outline-primary.dropdown-toggle.show:focus,
+.btn-outline-primary:active:focus {
+  box-shadow: 0 0 0 0.25rem rgb(255 255 255 / 50%);
+}
+
+.btn {
+  border-radius: 30px;
+  border: 1px solid white;
+  padding: 0px 10px;
+  line-height: 1.6em;
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: white;
+}
+
+.btn-outline-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.current-location {
+  height: 50px;
+  padding: 10px;
+  fill: white;
+}
