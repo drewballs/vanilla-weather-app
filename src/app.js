@@ -57,8 +57,21 @@ function displayTemperature(response) {
   }
 }
 
-let apiKey = "bf5fabfdc76e9febd628bad10917226b";
-let city = "Truro";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+function search(city) {
+  let apiKey = "bf5fabfdc76e9febd628bad10917226b";
 
-axios.get(apiUrl).then(displayTemperature);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let searchBox = document.querySelector("#city-search-box");
+  search(searchBox.value);
+}
+
+search("New York");
+
+let form = document.querySelector("#search-city");
+form.addEventListener("submit", handleSubmit);
