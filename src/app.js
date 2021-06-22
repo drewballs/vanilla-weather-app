@@ -32,7 +32,7 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
   let windSpeedElement = document.querySelector("#wind-speed");
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
-  let currentTimeElement = document.querySelector("#currentTime");
+  let currentTimeElement = document.querySelector("#current-time");
   currentTimeElement.innerHTML = formatTime(response.data.dt * 1000);
 }
 
