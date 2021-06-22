@@ -1,3 +1,4 @@
+// formatting the timestamp from the api
 function formatTime(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -22,6 +23,7 @@ function formatTime(timestamp) {
   return `${day} ${dateC}, ${hours}:${minutes}`;
 }
 
+// set all the parameters of the current weather module
 function displayTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#temp");
@@ -54,6 +56,45 @@ function displayTemperature(response) {
     iconMainElement.innerHTML = `<path d="m367.588 144.109-62.088-114.627c-4.836-8.931-11.998-16.386-20.678-21.539-8.702-5.196-18.669-7.943-28.822-7.943-20.685 0-39.652 11.296-49.499 29.479l-62.091 114.633c-10.587 19.556-18.723 40.387-24.179 61.917-5.462 21.547-8.231 43.742-8.231 65.971 0 8.836 7.164 16 16 16h80.679c2.918 17.315 15.132 31.506 31.321 37.248v18.752h-4c-19.851 0-36 16.149-36 36v76c0 30.878 25.122 56 56 56 30.879 0 56-25.122 56-56v-76c0-19.851-16.149-36-36-36h-4v-18.752c16.189-5.741 28.402-19.933 31.321-37.248h80.679c8.837 0 16-7.164 16-16 0-44.513-11.208-88.737-32.412-127.891zm-87.588 235.891v76c0 13.234-10.767 24-24 24-13.234 0-24-10.766-24-24v-76c0-2.206 1.794-4 4-4h40c2.206 0 4 1.794 4 4zm-8-100c0 8.822-7.178 16-16 16s-16-7.178-16-16v-16c0-8.822 7.178-16 16-16s16 7.178 16 16zm31.321-24c-3.821-22.671-23.579-40-47.321-40-23.741 0-43.499 17.329-47.321 40h-64.136c.964-14.199 3.208-28.306 6.707-42.109 4.806-18.964 11.973-37.315 21.299-54.54l62.09-114.631c4.249-7.846 12.434-12.72 21.361-12.72 4.379 0 8.673 1.182 12.451 3.438 3.744 2.223 6.825 5.432 8.91 9.283l62.089 114.628c16.133 29.79 25.696 62.911 28.003 96.651z"/>`;
   } else if (["50d", "50n"].includes(description)) {
     iconMainElement.innerHTML = `<path d="m503.159 206.318c7.904-3.952 11.107-13.563 7.155-21.466-3.95-7.903-13.561-11.105-21.466-7.156l-6.949 3.475c-10.525-11.238-23.56-20.445-38.706-26.653-27.362-11.215-63.464-13.655-96.571-6.527-30.451 6.556-53.92 20.138-67.944 38.965-7.343-1.957-14.926-2.948-22.674-2.948s-15.331.991-22.674 2.948c-14.024-18.827-37.493-32.409-67.944-38.965-33.107-7.128-69.208-4.688-96.571 6.527-15.146 6.208-28.181 15.415-38.706 26.653l-6.949-3.475c-7.903-3.953-17.515-.747-21.466 7.156-3.952 7.903-.749 17.514 7.155 21.466l2.837 1.418c-13.696 27.583-15.946 60.699-3.402 91.377 11.206 27.406 32.403 48.804 59.688 60.251 13.787 5.785 28.293 8.678 42.805 8.678 14.21 0 28.426-2.775 41.974-8.328 27.359-11.214 54.803-34.817 73.41-63.138 18.178-27.668 25.192-55.459 20.425-79.776 3.086-.521 6.229-.793 9.42-.793s6.334.273 9.42.793c-4.767 24.316 2.247 52.107 20.425 79.776 18.607 28.321 46.051 51.924 73.41 63.138 13.549 5.553 27.762 8.328 41.974 8.328 14.51 0 29.02-2.895 42.805-8.678 27.284-11.447 48.481-32.845 59.688-60.251 12.544-30.678 10.293-63.794-3.402-91.377zm-362.547 123.787c-19.465 7.978-40.866 7.889-60.262-.249-19.401-8.14-34.477-23.359-42.448-42.854-16.458-40.251 2.854-86.4 43.049-102.876 21.295-8.728 51.069-10.586 77.699-4.854 27.548 5.931 47.317 19.043 54.241 35.976 15.091 36.907-28.631 96.967-72.279 114.857zm333.493-43.103c-7.972 19.495-23.047 34.714-42.448 42.854-19.396 8.137-40.8 8.226-60.262.249-43.648-17.89-87.37-77.949-72.279-114.856 6.924-16.933 26.693-30.045 54.241-35.976 10.244-2.206 20.95-3.287 31.463-3.287 16.817 0 33.134 2.77 46.236 8.141 40.196 16.474 59.507 62.624 43.049 102.875z"/>`;
+  }
+  let windDirectionElement = document.querySelector("#wind-direction");
+  let windDegrees = response.data.wind.deg;
+  windDirectionElement.innerHTML = degToDir(windDegrees);
+
+  function degToDir(windDegrees) {
+    if (windDegrees >= 349 && windDegrees <= 11) {
+      return "N";
+    } else if (windDegrees >= 12 && windDegrees <= 33) {
+      return "NNE";
+    } else if (windDegrees >= 34 && windDegrees <= 56) {
+      return "NE";
+    } else if (windDegrees >= 57 && windDegrees <= 78) {
+      return "ENE";
+    } else if (windDegrees >= 79 && windDegrees <= 101) {
+      return "E";
+    } else if (windDegrees >= 102 && windDegrees <= 123) {
+      return "ESE";
+    } else if (windDegrees >= 124 && windDegrees <= 146) {
+      return "SE";
+    } else if (windDegrees >= 147 && windDegrees <= 168) {
+      return "SSE";
+    } else if (windDegrees >= 169 && windDegrees <= 191) {
+      return "S";
+    } else if (windDegrees >= 192 && windDegrees <= 213) {
+      return "SSW";
+    } else if (windDegrees >= 214 && windDegrees <= 236) {
+      return "SW";
+    } else if (windDegrees >= 237 && windDegrees <= 258) {
+      return "WSW";
+    } else if (windDegrees >= 259 && windDegrees <= 281) {
+      return "W";
+    } else if (windDegrees >= 282 && windDegrees <= 303) {
+      return "WNW";
+    } else if (windDegrees >= 304 && windDegrees <= 326) {
+      return "NW";
+    } else if (windDegrees >= 327 && windDegrees <= 348) {
+      return "NNW";
+    }
   }
 }
 // 3. take searchbox value and add it to apiURL, use axios to get aprURL then send to displaytemperature
