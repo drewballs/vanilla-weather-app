@@ -61,6 +61,7 @@ function displayTemperature(response) {
   let windDegrees = response.data.wind.deg;
   windDirectionElement.innerHTML = degToDir(windDegrees);
 
+  // compares wind degrees value and returns a direction
   function degToDir(windDegrees) {
     if (windDegrees >= 349 && windDegrees <= 11) {
       return "N";
