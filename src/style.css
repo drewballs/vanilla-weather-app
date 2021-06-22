@@ -89,6 +89,7 @@ h1 {
   font-size: 32px;
   font-weight: 300;
   padding: 0 10px;
+  text-transform: capitalize;
 }
 
 .wind {
