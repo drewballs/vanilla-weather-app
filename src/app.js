@@ -25,7 +25,6 @@ function formatTime(timestamp) {
 
 // set all the parameters of the current weather module
 function displayTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temp");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   let cityElement = document.querySelector("#city");
@@ -63,9 +62,7 @@ function displayTemperature(response) {
 
   // compares wind degrees value and returns a direction
   function degToDir(windDegrees) {
-    if (windDegrees >= 349 && windDegrees <= 11) {
-      return "N";
-    } else if (windDegrees >= 12 && windDegrees <= 33) {
+    if (windDegrees >= 12 && windDegrees <= 33) {
       return "NNE";
     } else if (windDegrees >= 34 && windDegrees <= 56) {
       return "NE";
@@ -95,6 +92,8 @@ function displayTemperature(response) {
       return "NW";
     } else if (windDegrees >= 327 && windDegrees <= 348) {
       return "NNW";
+    } else {
+      return "N";
     }
   }
 }
@@ -109,11 +108,47 @@ function search(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let searchBox = document.querySelector("#city-search-box");
-  search(searchBox.value);
+  if (searchBox.value !== null) {
+    search(searchBox.value);
+  } else {
+    null;
+  }
 }
-
-search("New York");
-
 // 1. set form and listen for submit on the form
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", handleSubmit);
+
+//change temp and wind to imperial
+
+let tempNumber = document.querySelector("#temp");
+let windNumber = document.querySelector("#wind-speed");
+
+function changeImperial() {
+  let tempUnitElement = document.querySelector("#temp-unit");
+  if (tempUnitElement.innerHTML.includes("C")) {
+    tempUnitElement.innerHTML = "°F";
+    tempNumber.innerHTML = Math.round((tempNumber.innerHTML * 9) / 5 + 32);
+    windNumber.innerHTML = Math.round(windNumber.innerHTML * 1.6);
+  } else {
+    null;
+  }
+}
+
+function changeMetric() {
+  let tempUnitElement = document.querySelector("#temp-unit");
+  if (tempUnitElement.innerHTML.includes("F")) {
+    tempUnitElement.innerHTML = "°C";
+    tempNumber.innerHTML = Math.round(((tempNumber.innerHTML - 32) * 5) / 9);
+    windNumber.innerHTML = Math.round(windNumber.innerHTML / 1.6);
+  } else {
+    null;
+  }
+}
+
+let metricButton = document.querySelector("#c");
+metricButton.addEventListener("click", changeMetric);
+
+let imperialButton = document.querySelector("#f");
+imperialButton.addEventListener("click", changeImperial);
+
+search("New York");

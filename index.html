@@ -23,7 +23,7 @@
   <body>
     <div class="container">
       <div class="location">
-        <h1 id="city">Location</h1>
+        <h1 id="city"></h1>
       </div>
 
       <div class="currently">
@@ -71,11 +71,13 @@
         </div>
         <div class="col-6">
           <ul>
-            <li class="temp" id="temp">9°C</li>
-            <li class="description" id="description">Raining</li>
+            <li class="temp">
+              <span id="temp"></span><span id="temp-unit">°C</span>
+            </li>
+            <li class="description" id="description"></li>
             <li class="wind" id="wind">
               Wind: <span id="wind-direction">NE</span>
-              <span id="wind-speed"> 2km/h</span>
+              <span id="wind-speed"></span>
             </li>
             <li class="temp-selector">
               <div
@@ -274,9 +276,9 @@
                 type="search"
                 class="form-control"
                 placeholder="Find your city"
-                aria-label="Find your city"
                 aria-describedby="button-addon2"
                 id="city-search-box"
+                aria-label="Find your city"
                 autocomplete="off"
               />
               <button
