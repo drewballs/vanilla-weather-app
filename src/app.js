@@ -26,13 +26,15 @@ function formatTime(timestamp) {
 // set all the parameters of the current weather module
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(response.data.main.temp) + "°C";
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
   let windSpeedElement = document.querySelector("#wind-speed");
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
+  let windSpeedUnit = document.querySelector("#wind-speed-unit");
+  windSpeedUnit.innerHTML = " kph";
   let currentTimeElement = document.querySelector("#current-time");
   currentTimeElement.innerHTML = formatTime(response.data.dt * 1000);
   let iconMainElement = document.querySelector("#icon-main");
@@ -108,38 +110,35 @@ function search(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let searchBox = document.querySelector("#city-search-box");
-  if (searchBox.value !== null) {
-    search(searchBox.value);
-  } else {
-    null;
-  }
+  search(searchBox.value);
 }
 // 1. set form and listen for submit on the form
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", handleSubmit);
 
-//change temp and wind to imperial
+//toggle metric and imperial
 
 let tempNumber = document.querySelector("#temp");
 let windNumber = document.querySelector("#wind-speed");
+let windSpeedUnit = document.querySelector("#wind-speed-unit");
 
 function changeImperial() {
-  let tempUnitElement = document.querySelector("#temp-unit");
-  if (tempUnitElement.innerHTML.includes("C")) {
-    tempUnitElement.innerHTML = "°F";
-    tempNumber.innerHTML = Math.round((tempNumber.innerHTML * 9) / 5 + 32);
-    windNumber.innerHTML = Math.round(windNumber.innerHTML * 1.6);
+  if (tempNumber.innerHTML.includes("C")) {
+    tempNumber.innerHTML =
+      Math.round((tempNumber.innerHTML.slice(0, -2) * 9) / 5 + 32) + "°F";
+    windNumber.innerHTML = Math.round(windNumber.innerHTML / 1.6);
+    windSpeedUnit.innerHTML = ` mph`;
   } else {
     null;
   }
 }
 
 function changeMetric() {
-  let tempUnitElement = document.querySelector("#temp-unit");
-  if (tempUnitElement.innerHTML.includes("F")) {
-    tempUnitElement.innerHTML = "°C";
-    tempNumber.innerHTML = Math.round(((tempNumber.innerHTML - 32) * 5) / 9);
-    windNumber.innerHTML = Math.round(windNumber.innerHTML / 1.6);
+  if (tempNumber.innerHTML.includes("F")) {
+    tempNumber.innerHTML =
+      Math.round(((tempNumber.innerHTML.slice(0, -2) - 32) * 5) / 9) + "°C";
+    windNumber.innerHTML = Math.round(windNumber.innerHTML * 1.6);
+    windSpeedUnit.innerHTML = ` kph`;
   } else {
     null;
   }
