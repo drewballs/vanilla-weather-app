@@ -102,7 +102,7 @@ h1 {
 .temp-selector {
   font-size: 32px;
   font-weight: 300;
-  padding: 0 10px;
+  padding: 5px 10px;
 }
 
 .weekly {
@@ -207,7 +207,7 @@ h1 {
 
 .footer {
   width: 100%;
-  padding-top: 40px;
+  padding-top: 30px;
 }
 
 .footer .col-6 {
